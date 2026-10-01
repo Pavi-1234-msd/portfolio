@@ -1,331 +1,746 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pavithran K | Full-Stack Developer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
-<style>
-:root{--bg:#f8fafc;--card:#fff;--fg:#0f172a;--mu:#64748b;--bd:#e2e8f0;--ac:#4f46e5;--acs:#eef2ff;--on:#fff;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1020;--card:#131a2e;--fg:#e8ecf6;--mu:#94a3b8;--bd:#243049;--ac:#818cf8;--acs:#1c2340;--on:#0b1020}}
-:root[data-theme="dark"]{--bg:#0b1020;--card:#131a2e;--fg:#e8ecf6;--mu:#94a3b8;--bd:#243049;--ac:#818cf8;--acs:#1c2340;--on:#0b1020}
-html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:1rem}
-.lift{transition:transform .25s,border-color .25s,box-shadow .25s}
-.lift:hover{transform:translateY(-4px);border-color:var(--ac);box-shadow:0 12px 30px -14px var(--ac)}
-.chip{display:inline-block;font-size:.75rem;padding:.2rem .6rem;border-radius:999px;background:var(--acs);color:var(--ac);transition:transform .2s}
-.chip:hover{transform:scale(1.08)}
-.mu{color:var(--mu)} .ac{color:var(--ac)}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border-radius:.75rem;font-weight:600;font-size:.9rem;border:1px solid var(--bd);background:var(--card);color:var(--fg);cursor:pointer;transition:transform .2s,border-color .2s}
-.btn:hover{transform:translateY(-2px);border-color:var(--ac)}
-.btn-p{background:var(--ac);color:var(--on);border-color:var(--ac)}
-.pill{padding:.4rem .9rem;border-radius:999px;font-size:.85rem;font-weight:500;border:1px solid var(--bd);background:var(--card);color:var(--mu);cursor:pointer;transition:.2s}
-.pill:hover{color:var(--fg);border-color:var(--ac)}
-.pill.on{background:var(--ac);color:var(--on);border-color:var(--ac)}
-.grad{background:linear-gradient(90deg,var(--ac),#06b6d4);-webkit-background-clip:text;background-clip:text;color:transparent}
-.skill:hover .sic{transform:rotate(-8deg) scale(1.15);background:var(--ac);color:var(--on)}
-.sic{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:.75rem;background:var(--acs);color:var(--ac);transition:.25s}
-@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.fade{animation:fade .35s both}
-.tl{border-left:2px solid var(--bd)}
-.dot{position:absolute;left:-1.62rem;top:.35rem;width:.9rem;height:.9rem;border-radius:50%;background:var(--ac);border:3px solid var(--bg)}
-input,textarea{width:100%;background:var(--bg);color:var(--fg);border:1px solid var(--bd);border-radius:.6rem;padding:.6rem .8rem;font:inherit;outline:none}
-input:focus,textarea:focus{border-color:var(--ac)}
-.ov{position:fixed;inset:0;background:rgba(2,6,23,.6);display:grid;place-items:center;padding:1rem;z-index:50}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pavithran K | Full-Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+  <style>
+    :root {
+      --bg: #070b14;
+      --fg: #e6eaf4;
+      --mu: #8b95ad;
+      --glass: rgba(255, 255, 255, .04);
+      --bd: rgba(255, 255, 255, .1);
+      --ac1: #818cf8;
+      --ac2: #22d3ee;
+      --on: #070b14;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px)
+    }
+
+    @media (prefers-color-scheme:light) {
+      :root:not([data-theme="dark"]) {
+        --bg: #f6f8fc;
+        --fg: #0f172a;
+        --mu: #5b6478;
+        --glass: rgba(255, 255, 255, .7);
+        --bd: rgba(15, 23, 42, .1);
+        --ac1: #4f46e5;
+        --ac2: #0891b2;
+        --on: #fff
+      }
+    }
+
+    :root[data-theme="light"] {
+      --bg: #f6f8fc;
+      --fg: #0f172a;
+      --mu: #5b6478;
+      --glass: rgba(255, 255, 255, .7);
+      --bd: rgba(15, 23, 42, .1);
+      --ac1: #4f46e5;
+      --ac2: #0891b2;
+      --on: #fff
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px)
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      overflow-x: hidden
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(600px circle at 15% 10%, color-mix(in srgb, var(--ac1) 22%, transparent), transparent 60%), radial-gradient(500px circle at 85% 30%, color-mix(in srgb, var(--ac2) 16%, transparent), transparent 60%)
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace
+    }
+
+    .mu {
+      color: var(--mu)
+    }
+
+    .ac {
+      color: var(--ac1)
+    }
+
+    .glass {
+      background: var(--glass);
+      border: 1px solid var(--bd);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 1rem
+    }
+
+    .glow {
+      position: relative;
+      transition: transform .3s cubic-bezier(.34, 1.56, .64, 1)
+    }
+
+    .glow:hover {
+      transform: translateY(-6px)
+    }
+
+    .glow::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: radial-gradient(260px circle at var(--x, 50%) var(--y, 0%), var(--ac1), transparent 65%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity .3s;
+      pointer-events: none
+    }
+
+    .glow:hover::before {
+      opacity: 1
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .65rem 1.15rem;
+      border-radius: .8rem;
+      font-weight: 600;
+      font-size: .9rem;
+      border: 1px solid var(--bd);
+      background: var(--glass);
+      color: var(--fg);
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: transform .25s cubic-bezier(.34, 1.56, .64, 1), border-color .2s
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--ac1)
+    }
+
+    .btn:active {
+      transform: scale(.93)
+    }
+
+    .btn-p {
+      background: linear-gradient(90deg, var(--ac1), var(--ac2));
+      color: var(--on);
+      border-color: transparent
+    }
+
+    .pill {
+      padding: .4rem .95rem;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 500;
+      border: 1px solid var(--bd);
+      background: var(--glass);
+      color: var(--mu);
+      cursor: pointer;
+      transition: transform .25s cubic-bezier(.34, 1.56, .64, 1), color .2s
+    }
+
+    .pill:hover {
+      color: var(--fg)
+    }
+
+    .pill:active {
+      transform: scale(.92)
+    }
+
+    .pill.on {
+      background: linear-gradient(90deg, var(--ac1), var(--ac2));
+      color: var(--on);
+      border-color: transparent
+    }
+
+    .chip {
+      display: inline-block;
+      font-size: .72rem;
+      padding: .2rem .6rem;
+      border-radius: 999px;
+      border: 1px solid var(--bd);
+      background: var(--glass);
+      color: var(--ac1)
+    }
+
+    .grad {
+      background: linear-gradient(90deg, var(--ac1), var(--ac2), var(--ac1));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shift 6s linear infinite
+    }
+
+    @keyframes shift {
+      to {
+        background-position: 200% center
+      }
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(12px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @keyframes slide {
+      from {
+        transform: translateX(100%)
+      }
+
+      to {
+        transform: none
+      }
+    }
+
+    @keyframes pulse2 {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(52, 211, 153, .6)
+      }
+
+      50% {
+        box-shadow: 0 0 0 6px rgba(52, 211, 153, 0)
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0
+      }
+    }
+
+    .fade {
+      animation: fade .4s both
+    }
+
+    .drawer {
+      animation: slide .35s cubic-bezier(.22, 1, .36, 1) both
+    }
+
+    .live {
+      width: .5rem;
+      height: .5rem;
+      border-radius: 50%;
+      background: #34d399;
+      animation: pulse2 1.8s infinite
+    }
+
+    .cur {
+      display: inline-block;
+      width: .5ch;
+      animation: blink 1s step-end infinite
+    }
+
+    .ov {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, .65);
+      backdrop-filter: blur(4px);
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      z-index: 60
+    }
+
+    .field {
+      width: 100%;
+      background: var(--glass);
+      color: var(--fg);
+      border: 1px solid var(--bd);
+      border-radius: .7rem;
+      padding: .65rem .85rem;
+      font: inherit;
+      outline: none;
+      transition: border-color .2s
+    }
+
+    .field:focus {
+      border-color: var(--ac1)
+    }
+
+    .field.bad {
+      border-color: #f87171
+    }
+
+    .tile {
+      cursor: pointer;
+      transition: transform .25s cubic-bezier(.34, 1.56, .64, 1), border-color .2s
+    }
+
+    .tile:hover,
+    .tile.on {
+      transform: translateY(-3px);
+      border-color: var(--ac1)
+    }
+
+    .ph {
+      border: 1px dashed var(--bd);
+      border-radius: .8rem;
+      display: grid;
+      place-items: center;
+      min-height: 110px;
+      font-size: .75rem;
+      color: var(--mu);
+      background: repeating-linear-gradient(45deg, transparent 0 10px, var(--glass) 10px 20px)
+    }
+
+    .term {
+      background: #05080f;
+      color: #c9d4ea;
+      border-radius: 1rem;
+      border: 1px solid rgba(255, 255, 255, .1)
+    }
+  </style>
 </head>
+
 <body>
-<div id="root"></div>
-<script type="text/babel">
-const { useState, useEffect, useRef } = React;
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo, useEffect, useRef } = React;
 
-const P = {
-  mail:'<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
-  github:'<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>',
-  linkedin:'<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>',
-  code:'<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
-  ext:'<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
-  x:'<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
-  send:'<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
-  copy:'<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>',
-  check:'<path d="M20 6 9 17l-5-5"/>',
-  brief:'<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/>',
-  grad:'<path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>',
-  cpu:'<rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/>',
-  db:'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/>',
-  cloud:'<path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>',
-  tool:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/>',
-  globe:'<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
-  book:'<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>',
-};
-const Icon = ({ n, s = 18, c = '' }) => (
-  <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-    strokeLinecap="round" strokeLinejoin="round" className={c} aria-hidden="true"
-    dangerouslySetInnerHTML={{ __html: P[n] }} />
-);
+    const P = {
+      mail: '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
+      github: '<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>',
+      linkedin: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>',
+      code: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+      ext: '<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
+      x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+      send: '<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
+      copy: '<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>',
+      check: '<path d="M20 6 9 17l-5-5"/>',
+      term: '<polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/>',
+      file: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8M16 13H8M16 17H8"/>',
+      eye: '<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>',
+      sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-6.34-4.34-1.41 1.41M19.07 4.93l-1.41 1.41M2 12h2M20 12h2M6.34 6.34 4.93 4.93m14.14 14.14-1.41-1.41"/>',
+      moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
+      arrow: '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+      zap: '<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>',
+    };
+    const Icon = ({ n, s = 18, c = '' }) => (
+      <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+        strokeLinecap="round" strokeLinejoin="round" className={c} aria-hidden="true"
+        dangerouslySetInnerHTML={{ __html: P[n] }} />
+    );
 
-const EMAIL = 'pavithrankalaivanan07@gmail.com';
-const LINKS = [
-  { n: 'github', label: 'GitHub', url: 'https://github.com/Pavi-1234-msd' },
-  { n: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/pavithrank-cse/' },
-  { n: 'code', label: 'LeetCode', url: 'https://leetcode.com/u/Pavithrankalaivanan/' },
-  { n: 'code', label: 'HackerRank', url: 'https://www.hackerrank.com/profile/pavithrankalaiv1' },
-];
+    const EMAIL = 'pavithrankalaivanan07@gmail.com';
+    const GH = 'https://github.com/Pavi-1234-msd';
+    const LI = 'https://www.linkedin.com/in/pavithrank-cse/';
+    const RESUME = 'https://drive.google.com/file/d/1SLzZ-H0xNBEfMqbllCRTsHUk9mZUV2gB/view?usp=drive_link';
 
-const FILTERS = ['All', 'Full-Stack', 'AI/ML', 'Real-time', 'Cloud'];
-const PROJECTS = [
-  {
-    title: 'SeriSense AI', sub: 'Sericulture Decision-Support PWA', cats: ['Full-Stack', 'AI/ML', 'Cloud'],
-    stack: ['React', 'Flask', 'Firebase', 'TensorFlow Lite'], live: 'https://serisense-ai.vercel.app',
-    pts: [
-      'Full-stack PWA offering AI leaf assessment, stage-wise climate advisory and silkworm health assessment in five languages, deployed on Vercel and Render.',
-      'MobileNetV2 classifier served through server-side TensorFlow Lite for three-class mulberry leaf assessment (98.75% validation accuracy on the augmented dataset).',
-      'Flask REST API secured with Firebase ID-token verification and per-user Firestore and Storage isolation, validated by 28 passing regression tests.',
-      'Rule-based risk engine that combines leaf, climate and symptom data into a 0\u2013100 priority index on a farm dashboard.',
-    ],
-  },
-  {
-    title: 'LearnLoop', sub: 'Peer-to-Peer Skill Exchange Platform', cats: ['Full-Stack', 'Real-time'],
-    stack: ['Java', 'Spring Boot', 'React', 'MySQL', 'WebSocket'],
-    pts: [
-      'Users exchange skills for free by listing what they know and want to learn, with send, accept and reject request workflows.',
-      'Real-time chat over WebSocket (SockJS + STOMP) with a unique chat room per user pair.',
-      'REST APIs built with Spring Boot and Spring Data JPA, backed by a MySQL database.',
-    ],
-  },
-  {
-    title: 'PET Adoption Portal', sub: 'Full-stack adoption web app', cats: ['Full-Stack', 'Cloud'],
-    stack: ['React', 'Spring Boot', 'MySQL', 'AWS'],
-    pts: [
-      'Web portal that lets users browse, list and adopt pets end to end.',
-      'Responsive React interfaces for registration, pet listings and adoption requests.',
-      'Secure REST APIs with Spring Boot and MySQL, deployed on AWS.',
-    ],
-  },
-];
+    const PROJECTS = [
+      {
+        id: 'seri', title: 'SeriSense AI', sub: 'Sericulture decision-support PWA', tags: ['Full Stack', 'Backend', 'Cloud', 'AI/ML'],
+        stack: ['React', 'Flask', 'Firebase', 'TensorFlow Lite', 'Vercel', 'Render'], live: 'https://serisense-ai.vercel.app',
+        blurb: 'AI leaf assessment, stage-wise climate advisory and silkworm health assessment in five languages, deployed on Vercel and Render.',
+        arch: ['React PWA (Vercel)', 'Firebase Auth / Firestore / Storage', 'Flask API (Render)', 'TFLite MobileNetV2 + risk engine'],
+        wins: ['Every API call carries a Firebase ID token that Flask verifies with Firebase Admin; the user ID comes from the verified token, never the client.',
+          'Per-user isolation across Firestore and Storage paths, checked by 28 passing regression tests and a production end-to-end run.',
+          'Risk scoring lives in a deterministic backend rule engine; the UI only displays its 0\u2013100 priority index, never a probability.',
+          'Interface delivered in five languages: English, Tamil, Kannada, Telugu and Hindi.',
+          'MobileNetV2 leaf classifier (three classes) served as server-side TensorFlow Lite; 98.75% validation accuracy on the augmented dataset.']
+      },
+      {
+        id: 'loop', title: 'LearnLoop', sub: 'Peer-to-peer skill exchange platform', tags: ['Full Stack', 'Backend'],
+        stack: ['Java', 'Spring Boot', 'React', 'MySQL', 'WebSocket'],
+        blurb: 'Users swap skills for free by listing what they know and want to learn, then chat in real time once a request is accepted.',
+        arch: ['React client', 'Spring Boot REST + STOMP', 'Spring Data JPA', 'MySQL'],
+        wins: ['Send, accept and reject request workflow between users.',
+          'Real-time chat over WebSocket (SockJS + STOMP) with a unique chat room per user pair.',
+          'REST APIs built with Spring Boot and Spring Data JPA over a MySQL database.']
+      },
+      {
+        id: 'pet', title: 'PET Adoption Portal', sub: 'End-to-end adoption web app', tags: ['Full Stack', 'Cloud'],
+        stack: ['React', 'Spring Boot', 'MySQL', 'AWS'],
+        blurb: 'Users browse, list and adopt pets through responsive React screens backed by secure REST APIs.',
+        arch: ['React UI', 'Spring Boot REST API', 'MySQL', 'Deployed on AWS'],
+        wins: ['Responsive React interfaces for registration, pet listings and adoption requests.',
+          'Secure REST APIs with Spring Boot and MySQL.', 'Deployed the full application on AWS.']
+      },
+    ];
+    const FILTERS = ['All', 'Full Stack', 'Backend', 'Cloud', 'AI/ML'];
 
-const SKILLS = [
-  { n: 'code', t: 'Languages', i: ['Java', 'Python', 'C++', 'JavaScript'] },
-  { n: 'globe', t: 'Frameworks & Web', i: ['Spring Boot', 'Flask', 'React', 'Vite', 'Flutter', 'HTML', 'CSS', 'REST APIs', 'WebSocket'] },
-  { n: 'cloud', t: 'Data & Cloud', i: ['MySQL', 'Cloud Firestore', 'Firebase Auth', 'Firebase Storage', 'AWS', 'Render', 'Vercel'] },
-  { n: 'cpu', t: 'AI / ML', i: ['TensorFlow Lite', 'MobileNetV2 (CNN)', 'Image Classification'] },
-  { n: 'tool', t: 'Tools', i: ['Git', 'GitHub', 'VS Code', 'Figma'] },
-  { n: 'db', t: 'Core CS', i: ['Data Structures', 'OOP', 'DBMS', 'Operating Systems', 'Computer Networks'] },
-];
+    const SKILLS = {
+      'Languages': [
+        ['Java', 'Backend language for LearnLoop and PET Adoption, and the base for Spring Boot.', 'LearnLoop, PET, internship'],
+        ['C++', 'Part of my toolkit for data structures and coursework.', 'Coursework'],
+        ['Python', 'Flask API and TensorFlow Lite inference in SeriSense AI.', 'SeriSense AI'],
+        ['SQL', 'Relational queries and schema work on MySQL.', 'LearnLoop, PET'],
+        ['JavaScript', 'Powers the React interfaces across all three projects.', 'All projects'],
+      ],
+      'Frontend & Backend': [
+        ['React', 'Component UIs in every project, and React with Vite during my internship.', 'All projects'],
+        ['Spring Boot', 'REST APIs with Spring Data JPA; also used during my internship.', 'LearnLoop, PET, internship'],
+        ['WebSockets', 'SockJS + STOMP chat with one room per user pair.', 'LearnLoop'],
+        ['Flask', 'Token-verified REST API serving the leaf, climate and silkworm modules.', 'SeriSense AI'],
+        ['Flutter', 'Cross-platform apps from one codebase for Android, web and macOS.', 'Internship'],
+      ],
+      'Cloud & Tools': [
+        ['AWS', 'Deployed the PET Adoption Portal.', 'PET Adoption'],
+        ['Firebase', 'Authentication, Cloud Firestore and Storage for SeriSense AI.', 'SeriSense AI'],
+        ['Render', 'Hosts the SeriSense Flask backend (Gunicorn).', 'SeriSense AI'],
+        ['Vercel', 'Hosts the SeriSense frontend and this portfolio.', 'SeriSense AI, portfolio'],
+        ['Git', 'Version control and collaboration, used throughout my internship.', 'Everything'],
+        ['MySQL', 'Relational database behind LearnLoop and PET Adoption.', 'LearnLoop, PET'],
+      ],
+    };
 
-function ProjectCard({ p }) {
-  const [open, setOpen] = useState(false);
-  const shown = open ? p.pts : p.pts.slice(0, 1);
-  return (
-    <article className="card lift p-5 flex flex-col fade">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <h3 className="text-lg font-bold">{p.title}</h3>
-          <p className="mu text-sm">{p.sub}</p>
-        </div>
-        {p.live && (
-          <a className="btn !py-1.5 !px-3 !text-xs" href={p.live} target="_blank" rel="noreferrer">
-            Live <Icon n="ext" s={14} />
-          </a>
-        )}
+    const OUT = {
+      help: ['Commands: whoami, experience, education, projects, skills, certs, contact, clear'],
+      whoami: ['Pavithran K | Full-stack developer', 'B.E. CSE (2023-2027). I like building software end to end, from the database to the screen a user sees.'],
+      experience: ['[Mar 2025 - Jun 2025] Full Stack Development Intern @ Nxtlogic Software Solutions, Coimbatore',
+        ' - Flutter cross-platform apps: one codebase on Android, web and macOS', ' - REST APIs with Spring Boot, integrated with MySQL',
+        ' - React + Vite interfaces connected to backend APIs', ' - Git for version control and collaboration'],
+      education: ['B.E. Computer Science and Engineering | 2023-2027 | CGPA 7.41', '  Sri Krishna College of Engineering and Technology, Coimbatore',
+        'Class XII | 87.66%', '  Sri Vetri Vikas Matric Higher Secondary School'],
+      projects: PROJECTS.map(p => `${p.title.padEnd(20)} ${p.stack.slice(0, 4).join(', ')}`),
+      skills: ['Languages  : Java, C++, Python, SQL, JavaScript', 'Frameworks : Spring Boot, React, Vite, Flask, Flutter, WebSockets',
+        'Cloud/Tools: AWS, Firebase, Render, Vercel, Git, MySQL'],
+      certs: ['Cisco   : CCNA Introduction to Networks; Apply AI - Analyze Customer Reviews', 'Infosys : Java Foundation; React Web Developer', 'NPTEL   : Cloud Computing'],
+      contact: [EMAIL, 'github.com/Pavi-1234-msd', 'linkedin.com/in/pavithrank-cse', 'leetcode.com/u/Pavithrankalaivanan'],
+    };
+
+    function useTyped(words) {
+      const [t, setT] = useState('');
+      useEffect(() => {
+        let i = 0, j = 0, del = false, id;
+        const tick = () => {
+          const w = words[i];
+          setT(w.slice(0, j));
+          if (!del && j === w.length) { del = true; id = setTimeout(tick, 1400); return; }
+          if (del && j === 0) { del = false; i = (i + 1) % words.length; }
+          j += del ? -1 : 1;
+          id = setTimeout(tick, del ? 35 : 75);
+        };
+        tick();
+        return () => clearTimeout(id);
+      }, []);
+      return t;
+    }
+
+    const Glow = ({ className = '', children, ...rest }) => (
+      <div className={'glass glow ' + className} {...rest}
+        onMouseMove={e => {
+          const r = e.currentTarget.getBoundingClientRect();
+          e.currentTarget.style.setProperty('--x', (e.clientX - r.left) + 'px');
+          e.currentTarget.style.setProperty('--y', (e.clientY - r.top) + 'px');
+        }}>
+        {children}
       </div>
-      <ul className="mt-3 space-y-2 text-sm mu list-disc pl-5">
-        {shown.map((t, i) => <li key={i}>{t}</li>)}
-      </ul>
-      {p.pts.length > 1 && (
-        <button className="ac text-sm font-semibold text-left mt-2" onClick={() => setOpen(!open)}>
-          {open ? 'Show less' : `Show ${p.pts.length - 1} more`}
+    );
+
+    const Sec = ({ id, kicker, title, children }) => (
+      <section id={id} className="max-w-6xl mx-auto px-5 py-16">
+        <p className="ac text-sm font-semibold uppercase tracking-widest mono">{kicker}</p>
+        <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 mt-1">{title}</h2>
+        {children}
+      </section>
+    );
+
+    function CopyEmail({ className = '' }) {
+      const [ok, setOk] = useState(false);
+      const go = async () => {
+        try { await navigator.clipboard.writeText(EMAIL); setOk(true); setTimeout(() => setOk(false), 1800); } catch (e) { setOk(false); }
+      };
+      return (
+        <button className={'btn ' + className} onClick={go} aria-label="Copy email">
+          <Icon n={ok ? 'check' : 'copy'} s={16} c={ok ? 'text-emerald-400' : ''} /> {ok ? 'Copied!' : 'Copy email'}
         </button>
-      )}
-      <div className="mt-auto pt-4 flex flex-wrap gap-2">
-        {p.stack.map(s => <span key={s} className="chip">{s}</span>)}
-      </div>
-    </article>
-  );
-}
+      );
+    }
 
-function ContactModal({ onClose }) {
-  const [form, setForm] = useState({ name: '', msg: '' });
-  const [copied, setCopied] = useState(false);
-  const [sent, setSent] = useState(false);
-  const first = useRef(null);
-  useEffect(() => {
-    first.current && first.current.focus();
-    const k = e => e.key === 'Escape' && onClose();
-    window.addEventListener('keydown', k);
-    return () => window.removeEventListener('keydown', k);
-  }, []);
-  const copy = async () => {
-    try { await navigator.clipboard.writeText(EMAIL); setCopied(true); setTimeout(() => setCopied(false), 1800); } catch (e) { setCopied(false); }
-  };
-  const submit = e => {
-    e.preventDefault();
-    if (!form.msg.trim()) return;
-    const subject = encodeURIComponent('Portfolio enquiry' + (form.name ? ' from ' + form.name : ''));
-    const body = encodeURIComponent(form.msg + (form.name ? '\n\n' + form.name : ''));
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
-    setSent(true);
-  };
-  return (
-    <div className="ov" onClick={onClose} role="dialog" aria-modal="true" aria-label="Contact">
-      <div className="card w-full max-w-md p-6 fade" onClick={e => e.stopPropagation()}>
-        <div className="flex items-center justify-between mb-1">
-          <h3 className="text-xl font-bold">Let's talk</h3>
-          <button onClick={onClose} aria-label="Close" className="mu"><Icon n="x" s={20} /></button>
-        </div>
-        <p className="mu text-sm mb-4">Write a short note and it opens in your email app, addressed to me.</p>
-        <form onSubmit={submit} className="space-y-3">
-          <input ref={first} placeholder="Your name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
-          <textarea rows="4" placeholder="Your message" value={form.msg} onChange={e => setForm({ ...form, msg: e.target.value })} />
-          <div className="flex flex-wrap gap-2">
-            <button type="submit" className="btn btn-p"><Icon n="send" s={16} /> Open in email app</button>
-            <button type="button" className="btn" onClick={copy}>
-              <Icon n={copied ? 'check' : 'copy'} s={16} /> {copied ? 'Copied' : 'Copy email'}
-            </button>
-          </div>
-          {sent && <p className="text-sm ac">Your email app should open with the message filled in.</p>}
-        </form>
-        <div className="mt-5 pt-4 flex flex-wrap gap-3" style={{ borderTop: '1px solid var(--bd)' }}>
-          {LINKS.map(l => (
-            <a key={l.label} href={l.url} target="_blank" rel="noreferrer" className="mu text-sm flex items-center gap-1.5 hover:underline">
-              <Icon n={l.n} s={15} /> {l.label}
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const Sec = ({ id, title, kicker, children }) => (
-  <section id={id} className="max-w-5xl mx-auto px-5 py-14">
-    <p className="ac text-sm font-semibold uppercase tracking-wider">{kicker}</p>
-    <h2 className="text-3xl font-extrabold mb-8">{title}</h2>
-    {children}
-  </section>
-);
-
-function App() {
-  const [filter, setFilter] = useState('All');
-  const [modal, setModal] = useState(false);
-  const list = PROJECTS.filter(p => filter === 'All' || p.cats.includes(filter));
-  return (
-    <div>
-      <header className="sticky z-40" style={{ top: 'env(safe-area-inset-top, 0px)', background: 'var(--bg)', borderBottom: '1px solid var(--bd)' }}>
-        <nav className="max-w-5xl mx-auto px-5 h-14 flex items-center justify-between">
-          <a href="#top" className="font-extrabold">Pavithran<span className="ac">.</span></a>
-          <div className="flex items-center gap-5 text-sm mu">
-            <a className="hidden sm:inline hover:underline" href="#projects">Projects</a>
-            <a className="hidden sm:inline hover:underline" href="#skills">Skills</a>
-            <a className="hidden sm:inline hover:underline" href="#experience">Experience</a>
-            <button className="btn btn-p !py-1.5 !px-3" onClick={() => setModal(true)}><Icon n="mail" s={15} /> Contact</button>
-          </div>
-        </nav>
-      </header>
-
-      <main id="top">
-        <div className="max-w-5xl mx-auto px-5 pt-16 pb-6">
-          <p className="ac font-semibold mb-3">Hi, I'm</p>
-          <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight">Pavithran K</h1>
-          <p className="text-2xl sm:text-3xl font-bold grad mt-2">Full-stack developer</p>
-          <p className="mu mt-5 max-w-2xl text-lg">
-            I like building software end to end, from the database to the screen a user sees. B.E. CSE student working with
-            Java, Spring Boot, React, Python and Flask, with a deployed AI-assisted app among my projects.
-          </p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            <a href="#projects" className="btn btn-p">View projects</a>
-            <button className="btn" onClick={() => setModal(true)}><Icon n="mail" s={16} /> Get in touch</button>
-            {LINKS.slice(0, 2).map(l => (
-              <a key={l.label} className="btn" href={l.url} target="_blank" rel="noreferrer" aria-label={l.label}><Icon n={l.n} s={16} /> {l.label}</a>
-            ))}
-          </div>
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {[['3', 'full-stack projects'], ['Mar\u2013Jun 2025', 'full-stack internship'], ['CGPA 7.41', 'B.E. CSE, 2023\u20132027']].map(([a, b]) => (
-              <div key={b} className="card lift p-4"><p className="text-xl font-extrabold">{a}</p><p className="mu text-sm">{b}</p></div>
-            ))}
+    function ProjectModal({ p, onClose }) {
+      useEffect(() => {
+        const k = e => e.key === 'Escape' && onClose();
+        window.addEventListener('keydown', k);
+        return () => window.removeEventListener('keydown', k);
+      }, []);
+      return (
+        <div className="ov" onClick={onClose} role="dialog" aria-modal="true" aria-label={p.title}>
+          <div className="glass fade w-full max-w-2xl max-h-[88vh] overflow-y-auto p-6" style={{ background: 'var(--bg)' }} onClick={e => e.stopPropagation()}>
+            <div className="flex items-start justify-between gap-3">
+              <div><h3 className="text-2xl font-extrabold">{p.title}</h3><p className="mu text-sm">{p.sub}</p></div>
+              <button onClick={onClose} aria-label="Close" className="mu"><Icon n="x" s={22} /></button>
+            </div>
+            <p className="mt-4 mu">{p.blurb}</p>
+            <h4 className="mono ac text-xs uppercase tracking-widest mt-6 mb-2">Architecture</h4>
+            <div className="flex flex-wrap items-center gap-2">
+              {p.arch.map((a, i) => (
+                <React.Fragment key={a}>
+                  <span className="glass px-3 py-2 text-xs font-medium">{a}</span>
+                  {i < p.arch.length - 1 && <Icon n="arrow" s={14} c="mu" />}
+                </React.Fragment>
+              ))}
+            </div>
+            <h4 className="mono ac text-xs uppercase tracking-widest mt-6 mb-2">Key engineering points</h4>
+            <ul className="space-y-2 text-sm">
+              {p.wins.map(w => <li key={w} className="flex gap-2"><Icon n="zap" s={15} c="ac mt-0.5 shrink-0" /><span className="mu">{w}</span></li>)}
+            </ul>
+            <h4 className="mono ac text-xs uppercase tracking-widest mt-6 mb-2">Screenshots</h4>
+            <div className="grid grid-cols-2 gap-3"><div className="ph">Screenshot placeholder</div><div className="ph">Diagram placeholder</div></div>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {p.live && <a className="btn btn-p" href={p.live} target="_blank" rel="noreferrer">Live demo <Icon n="ext" s={14} /></a>}
+              <a className="btn" href={GH} target="_blank" rel="noreferrer"><Icon n="github" s={16} /> GitHub</a>
+            </div>
           </div>
         </div>
+      );
+    }
 
-        <Sec id="projects" kicker="Work" title="Projects">
-          <div className="flex flex-wrap gap-2 mb-6" role="tablist">
-            {FILTERS.map(f => (
-              <button key={f} className={'pill' + (filter === f ? ' on' : '')} onClick={() => setFilter(f)}>{f}</button>
-            ))}
+    function Projects() {
+      const [f, setF] = useState('All');
+      const [sel, setSel] = useState(null);
+      const list = useMemo(() => PROJECTS.filter(p => f === 'All' || p.tags.includes(f)), [f]);
+      return (
+        <Sec id="projects" kicker="// selected work" title="Projects">
+          <div className="flex flex-wrap gap-2 mb-7">
+            {FILTERS.map(x => <button key={x} className={'pill' + (f === x ? ' on' : '')} onClick={() => setF(x)}>{x}</button>)}
           </div>
-          <div className="grid gap-5 md:grid-cols-2" key={filter}>
-            {list.map(p => <ProjectCard key={p.title} p={p} />)}
-          </div>
-        </Sec>
-
-        <Sec id="skills" kicker="Toolbox" title="Skills">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {SKILLS.map(s => (
-              <div key={s.t} className="card lift skill p-5">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="sic"><Icon n={s.n} s={20} /></span>
-                  <h3 className="font-bold">{s.t}</h3>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3" key={f}>
+            {list.map(p => (
+              <Glow key={p.id} className="p-5 flex flex-col fade">
+                <div className="flex flex-wrap gap-1.5 mb-3">{p.tags.slice(0, 3).map(t => <span key={t} className="chip">{t}</span>)}</div>
+                <h3 className="text-lg font-bold">{p.title}</h3>
+                <p className="mu text-sm mt-1">{p.blurb}</p>
+                <div className="flex flex-wrap gap-1.5 mt-4">{p.stack.map(s => <span key={s} className="chip" style={{ color: 'var(--fg)' }}>{s}</span>)}</div>
+                <div className="mt-auto pt-5 flex flex-wrap gap-2">
+                  <button className="btn btn-p !py-2" onClick={() => setSel(p)}><Icon n="eye" s={15} /> Quick view</button>
+                  {p.live && <a className="btn !py-2" href={p.live} target="_blank" rel="noreferrer">Live <Icon n="ext" s={14} /></a>}
+                  <a className="btn !py-2" href={GH} target="_blank" rel="noreferrer" aria-label="GitHub"><Icon n="github" s={15} /></a>
                 </div>
-                <div className="flex flex-wrap gap-2">{s.i.map(x => <span key={x} className="chip">{x}</span>)}</div>
-              </div>
+              </Glow>
             ))}
           </div>
+          {sel && <ProjectModal p={sel} onClose={() => setSel(null)} />}
         </Sec>
+      );
+    }
 
-        <Sec id="experience" kicker="Journey" title="Experience & Education">
-          <div className="tl ml-3 pl-7 space-y-9">
-            <div className="relative">
-              <span className="dot" />
-              <p className="ac text-sm font-semibold">March 2025 – June 2025</p>
-              <h3 className="text-lg font-bold flex items-center gap-2"><Icon n="brief" s={18} /> Full Stack Development Intern</h3>
-              <p className="mu text-sm mb-2">Nxtlogic Software Solutions, Coimbatore</p>
-              <ul className="list-disc pl-5 text-sm mu space-y-1.5">
-                <li>Developed cross-platform applications with Flutter, running a single codebase across Android, web and macOS.</li>
-                <li>Built RESTful APIs with Spring Boot and integrated them with a MySQL database.</li>
-                <li>Created responsive interfaces using React with Vite and connected them to backend APIs.</li>
-                <li>Used Git for version control and collaborative development.</li>
-              </ul>
+    function Skills() {
+      const tabs = Object.keys(SKILLS);
+      const [tab, setTab] = useState(tabs[0]);
+      const [act, setAct] = useState(SKILLS[tabs[0]][0]);
+      const pick = t => { setTab(t); setAct(SKILLS[t][0]); };
+      return (
+        <Sec id="skills" kicker="// toolbox" title="Skills matrix">
+          <div className="flex flex-wrap gap-2 mb-6">
+            {tabs.map(t => <button key={t} className={'pill' + (tab === t ? ' on' : '')} onClick={() => pick(t)}>{t}</button>)}
+          </div>
+          <div className="grid gap-5 lg:grid-cols-5">
+            <div className="lg:col-span-3 grid grid-cols-2 sm:grid-cols-3 gap-3" key={tab}>
+              {SKILLS[tab].map(s => (
+                <button key={s[0]} className={'glass tile fade p-4 text-left' + (act[0] === s[0] ? ' on' : '')}
+                  onMouseEnter={() => setAct(s)} onClick={() => setAct(s)}>
+                  <p className="font-bold">{s[0]}</p><p className="mu text-xs mt-1">{s[2]}</p>
+                </button>
+              ))}
             </div>
-            <div className="relative">
-              <span className="dot" />
-              <p className="ac text-sm font-semibold">2023 – 2027</p>
-              <h3 className="text-lg font-bold flex items-center gap-2"><Icon n="grad" s={18} /> B.E. Computer Science and Engineering</h3>
-              <p className="mu text-sm">Sri Krishna College of Engineering and Technology, Coimbatore · CGPA 7.41</p>
-              <p className="mu text-sm mt-1">Data Structures, OOP, DBMS, Operating Systems, Computer Networks</p>
+            <div className="lg:col-span-2 glass p-6" aria-live="polite">
+              <p className="mono ac text-xs uppercase tracking-widest">How I use it</p>
+              <h3 className="text-2xl font-extrabold mt-2">{act[0]}</h3>
+              <p className="mu mt-3">{act[1]}</p>
+              <p className="mt-4 text-xs mu">Used in: <span className="text-[color:var(--fg)]">{act[2]}</span></p>
             </div>
-            <div className="relative">
-              <span className="dot" />
-              <p className="ac text-sm font-semibold">Certifications</p>
-              <h3 className="text-lg font-bold flex items-center gap-2"><Icon n="book" s={18} /> Continuous learning</h3>
-              <div className="flex flex-wrap gap-2 mt-2">
-                {['Cisco: CCNA Introduction to Networks', 'Cisco: Apply AI \u2013 Analyze Customer Reviews', 'Infosys Springboard: Java Foundation', 'Infosys Springboard: React Web Developer', 'NPTEL: Cloud Computing'].map(c => <span key={c} className="chip">{c}</span>)}
+          </div>
+        </Sec>
+      );
+    }
+
+    function Terminal() {
+      const [lines, setLines] = useState([{ k: 'out', s: 'Type a command or tap a chip below. Try "experience".' }]);
+      const [val, setVal] = useState('');
+      const body = useRef(null);
+      useEffect(() => { if (body.current) body.current.scrollTop = body.current.scrollHeight; }, [lines]);
+      const run = raw => {
+        const c = raw.trim().toLowerCase();
+        if (!c) return;
+        if (c === 'clear') { setLines([]); return; }
+        const res = OUT[c] || [`command not found: ${c}. Type help.`];
+        setLines(l => [...l, { k: 'cmd', s: c }, ...res.map(s => ({ k: 'out', s }))]);
+      };
+      return (
+        <Sec id="experience" kicker="// experience & education" title="Interactive terminal">
+          <div className="term fade overflow-hidden">
+            <div className="flex items-center gap-2 px-4 py-2.5" style={{ borderBottom: '1px solid rgba(255,255,255,.1)' }}>
+              <span className="w-3 h-3 rounded-full bg-red-400/80" /><span className="w-3 h-3 rounded-full bg-yellow-400/80" /><span className="w-3 h-3 rounded-full bg-emerald-400/80" />
+              <span className="mono text-xs ml-2 opacity-60">pavithran@portfolio:~</span>
+            </div>
+            <div ref={body} className="mono text-[13px] leading-relaxed p-4 h-72 overflow-y-auto">
+              {lines.map((l, i) => (
+                <div key={i} className="whitespace-pre-wrap break-words" style={{ color: l.k === 'cmd' ? '#22d3ee' : undefined }}>
+                  {l.k === 'cmd' ? '$ ' + l.s : l.s}
+                </div>
+              ))}
+              <form className="flex items-center gap-2 mt-1" onSubmit={e => { e.preventDefault(); run(val); setVal(''); }}>
+                <span style={{ color: '#22d3ee' }}>$</span>
+                <input value={val} onChange={e => setVal(e.target.value)} aria-label="Terminal command" autoComplete="off" spellCheck="false"
+                  className="flex-1 bg-transparent outline-none mono text-[13px]" placeholder="type a command" />
+              </form>
+            </div>
+            <div className="flex flex-wrap gap-2 px-4 py-3" style={{ borderTop: '1px solid rgba(255,255,255,.1)' }}>
+              {['help', 'whoami', 'experience', 'education', 'projects', 'skills', 'certs', 'contact', 'clear'].map(c => (
+                <button key={c} className="pill mono !text-xs !py-1" style={{ background: 'transparent', color: '#c9d4ea' }} onClick={() => run(c)}>{c}</button>
+              ))}
+            </div>
+          </div>
+        </Sec>
+      );
+    }
+
+    function Drawer({ onClose }) {
+      const [f, setF] = useState({ name: '', email: '', msg: '' });
+      const [touched, setTouched] = useState(false);
+      const [status, setStatus] = useState('idle');
+      useEffect(() => {
+        const k = e => e.key === 'Escape' && onClose();
+        window.addEventListener('keydown', k);
+        return () => window.removeEventListener('keydown', k);
+      }, []);
+      const err = useMemo(() => ({
+        name: f.name.trim().length < 2 ? 'Please enter your name.' : '',
+        email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email) ? '' : 'Enter a valid email address.',
+        msg: f.msg.trim().length < 10 ? 'Message should be at least 10 characters.' : '',
+      }), [f]);
+      const valid = !err.name && !err.email && !err.msg;
+      const submit = e => {
+        e.preventDefault(); setTouched(true);
+        if (!valid) return;
+        setStatus('sending');
+        setTimeout(() => {
+          setStatus('sent');
+          const body = encodeURIComponent(`${f.msg}\n\n${f.name} (${f.email})`);
+          window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent('Portfolio message from ' + f.name)}&body=${body}`;
+        }, 900);
+      };
+      const Fld = ({ k, label, area }) => (
+        <label className="block">
+          <span className="text-sm mu">{label}</span>
+          {area ? <textarea rows="4" className={'field mt-1' + (touched && err[k] ? ' bad' : '')} value={f[k]} onChange={e => setF({ ...f, [k]: e.target.value })} />
+            : <input className={'field mt-1' + (touched && err[k] ? ' bad' : '')} value={f[k]} onChange={e => setF({ ...f, [k]: e.target.value })} />}
+          {touched && err[k] && <span className="text-xs text-red-400">{err[k]}</span>}
+        </label>
+      );
+      return (
+        <div className="ov !p-0 !place-items-stretch justify-items-end" onClick={onClose} role="dialog" aria-modal="true" aria-label="Contact">
+          <div className="drawer h-full w-full max-w-md p-6 overflow-y-auto" style={{ background: 'var(--bg)', borderLeft: '1px solid var(--bd)' }} onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between">
+              <h3 className="text-2xl font-extrabold">Get in touch</h3>
+              <button onClick={onClose} aria-label="Close" className="mu"><Icon n="x" s={22} /></button>
+            </div>
+            {status === 'sent' ? (
+              <div className="text-center py-16 fade">
+                <div className="mx-auto w-16 h-16 rounded-full grid place-items-center bg-emerald-400/15 text-emerald-400"><Icon n="check" s={32} /></div>
+                <h4 className="text-xl font-bold mt-5">Message ready!</h4>
+                <p className="mu mt-2 text-sm">Your email app is opening with the message filled in. Press send there to deliver it.</p>
+                <button className="btn mt-6" onClick={() => { setStatus('idle'); setTouched(false); setF({ name: '', email: '', msg: '' }); }}>Write another</button>
+              </div>
+            ) : (
+              <form onSubmit={submit} noValidate className="space-y-4 mt-5">
+                <p className="mu text-sm">Open to full-stack and Graduate Engineer Trainee roles. Tell me what you have in mind.</p>
+                <Fld k="name" label="Name" /><Fld k="email" label="Your email" /><Fld k="msg" label="Message" area />
+                <button type="submit" className="btn btn-p w-full justify-center" disabled={status === 'sending'}>
+                  <Icon n="send" s={16} /> {status === 'sending' ? 'Sending...' : 'Send message'}
+                </button>
+              </form>
+            )}
+            <div className="mt-8 pt-5 flex flex-wrap gap-2" style={{ borderTop: '1px solid var(--bd)' }}>
+              <CopyEmail />
+              <a className="btn" href={GH} target="_blank" rel="noreferrer"><Icon n="github" s={16} /></a>
+              <a className="btn" href={LI} target="_blank" rel="noreferrer"><Icon n="linkedin" s={16} /></a>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    function App() {
+      const [drawer, setDrawer] = useState(false);
+      const [theme, setTheme] = useState('dark');
+      const typed = useTyped(['Full-stack developer', 'Spring Boot + React', 'Flask + Firebase apps', 'Open to SDE trainee roles']);
+      useEffect(() => { document.documentElement.setAttribute('data-theme', theme); }, [theme]);
+      return (
+        <div>
+          <header className="sticky z-40" style={{ top: 'env(safe-area-inset-top, 0px)', background: 'color-mix(in srgb, var(--bg) 70%, transparent)', backdropFilter: 'blur(14px)', borderBottom: '1px solid var(--bd)' }}>
+            <nav className="max-w-6xl mx-auto px-5 h-14 flex items-center justify-between">
+              <a href="#top" className="font-extrabold mono">pavithran<span className="ac">.dev</span></a>
+              <div className="flex items-center gap-4 text-sm mu">
+                <a className="hidden sm:inline hover:text-[color:var(--fg)]" href="#projects">Projects</a>
+                <a className="hidden sm:inline hover:text-[color:var(--fg)]" href="#skills">Skills</a>
+                <a className="hidden sm:inline hover:text-[color:var(--fg)]" href="#experience">Experience</a>
+                <button className="mu" aria-label="Toggle theme" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}><Icon n={theme === 'dark' ? 'sun' : 'moon'} s={18} /></button>
+                <button className="btn btn-p !py-1.5 !px-3" onClick={() => setDrawer(true)}>Contact</button>
+              </div>
+            </nav>
+          </header>
+
+          <main id="top">
+            <div className="max-w-6xl mx-auto px-5 pt-20 pb-10">
+              <span className="glass inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium"><span className="live" /> Available for new roles</span>
+              <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight mt-6">Hi, I'm <span className="grad">Pavithran K</span></h1>
+              <p className="mono text-lg sm:text-2xl mt-4 h-8">&gt; {typed}<span className="cur ac">|</span></p>
+              <p className="mu mt-5 max-w-2xl text-lg">B.E. CSE student who builds software end to end, from the database to the screen a user sees, with Java, Spring Boot, React, Python and Flask.</p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href="#projects" className="btn btn-p">Explore projects <Icon n="arrow" s={16} /></a>
+                <a href={RESUME} target="_blank" rel="noreferrer" className="btn"><Icon n="file" s={16} /> View resume</a>
+                <button className="btn" onClick={() => setDrawer(true)}><Icon n="mail" s={16} /> Get in touch</button>
+              </div>
+              <div className="mt-6 flex gap-2">
+                <a className="btn !p-2.5" href={GH} target="_blank" rel="noreferrer" aria-label="GitHub"><Icon n="github" s={18} /></a>
+                <a className="btn !p-2.5" href={LI} target="_blank" rel="noreferrer" aria-label="LinkedIn"><Icon n="linkedin" s={18} /></a>
+                <a className="btn !p-2.5" href={`mailto:${EMAIL}`} aria-label="Email"><Icon n="mail" s={18} /></a>
+                <CopyEmail className="!py-2" />
+              </div>
+              <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[['3', 'full-stack projects'], ['Mar\u2013Jun 2025', 'full-stack internship'], ['7.41 CGPA', 'B.E. CSE, 2023\u20132027']].map(([a, b]) => (
+                  <Glow key={b} className="p-5"><p className="text-2xl font-extrabold">{a}</p><p className="mu text-sm">{b}</p></Glow>
+                ))}
               </div>
             </div>
-          </div>
-        </Sec>
+            <Projects />
+            <Skills />
+            <Terminal />
+          </main>
+          <footer className="mu text-center text-sm pb-12 mono">built with React + Tailwind | Pavithran K</footer>
+          {drawer && <Drawer onClose={() => setDrawer(false)} />}
+        </div>
+      );
+    }
 
-        <section className="max-w-5xl mx-auto px-5 pb-16">
-          <div className="card p-8 text-center">
-            <h2 className="text-2xl font-extrabold">Looking for a full-stack or SDE trainee?</h2>
-            <p className="mu mt-2">Open to full-stack and Graduate Engineer Trainee roles.</p>
-            <button className="btn btn-p mt-5" onClick={() => setModal(true)}><Icon n="mail" s={16} /> Contact me</button>
-          </div>
-        </section>
-      </main>
-
-      <footer className="mu text-center text-sm pb-10">© Pavithran K</footer>
-      {modal && <ContactModal onClose={() => setModal(false)} />}
-    </div>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-</script>
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
 </body>
+
 </html>
